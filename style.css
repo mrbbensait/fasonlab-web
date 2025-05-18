@@ -1847,6 +1847,44 @@ input:focus, select:focus, textarea:focus {
         --section-spacing: 5rem;
     }
     
+    .navbar .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .logo {
+        margin-bottom: 0.5rem;
+    }
+    
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 1.5rem;
+        padding: 0;
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+        transform: none;
+        height: auto;
+    }
+    
+    .nav-links a {
+        font-size: var(--font-size-sm);
+        color: var(--color-text);
+    }
+    
+    .menu-toggle {
+        display: none;
+    }
+    
+    /* Menüdeki gizlenecek öğeler */
+    .nav-cta, 
+    .nav-links li.process-link {
+        display: none;
+    }
+    
     .hero h1 {
         font-size: var(--font-size-3xl);
     }
@@ -1903,57 +1941,35 @@ input:focus, select:focus, textarea:focus {
     .footer-legal {
         justify-content: center;
     }
-    
-    .menu-toggle {
-        display: block;
+}
+
+@media (max-width: 576px) {
+    .navbar .container {
+        padding: 0 1rem;
     }
     
     .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background-color: var(--color-darker);
-        padding: 5rem 2rem;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: var(--z-menu);
-        gap: 1.25rem;
-        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.4);
-    }
-    
-    .nav-links.active {
-        transform: translateX(0);
+        gap: 1rem;
     }
     
     .nav-links a {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-xs);
     }
     
-    .nav-cta {
-        margin: 1rem 0 0;
-        width: 100%;
-    }
-    
-    .nav-cta a {
-        width: 100%;
+    .hero-content-right {
+        margin-left: 0;
         text-align: center;
+        max-width: 800px;
     }
     
-    .menu-toggle.active span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+    .hero-content-right .hero-cta,
+    .hero-content-right .hero-badges {
+        justify-content: center;
     }
     
-    .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .menu-toggle.active span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+    .category-header {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 }
 

@@ -58,7 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Süreç zaman çizelgesi animasyonlarını başlat
     initProcessTimeline();
     
-    // Mobil Menü
+    // Mobil Menü - Artık kullanılmıyor, ancak gelecekte kullanılabilir diye kod kalabilir
+    /*
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
@@ -89,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    */
     
     // Scroll Olayları
     const navbar = document.querySelector('.navbar');
