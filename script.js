@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             step.style.transform = 'translateY(30px)';
             
             // İlk aşama dışındaki tüm aşamaların delay'ini ayarla
-            const baseDelay = 300; // ms
+            const baseDelay = 100; // ms
             const stepDelay = index * baseDelay;
             
             step.setAttribute('data-aos-delay', stepDelay);
@@ -185,17 +185,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const elements = document.querySelectorAll('[data-aos]');
         const flowArrows = document.querySelectorAll('.flow-arrow');
         const statsSection = document.querySelector('.stats');
-        const triggerPoint = window.innerHeight * 0.95; // 0.75'ten 0.95'e yükseltildi, neredeyse sayfa yüklenir yüklenmez gösterilecek
+        const triggerPoint = window.innerHeight * 0.9;
         
         elements.forEach(element => {
             if (!element.classList.contains('aos-animated')) {
                 const elementTop = element.getBoundingClientRect().top;
                 
                 if (elementTop < triggerPoint) {
-                    // Gecikmeleri kaldır - hemen göster
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                    element.classList.add('aos-animated');
+                    const delay = parseInt(element.getAttribute('data-aos-delay') || 0);
+                    
+                    setTimeout(() => {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                        element.classList.add('aos-animated');
+                    }, delay);
                 }
             }
         });
@@ -206,10 +209,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const arrowTop = arrow.getBoundingClientRect().top;
                 
                 if (arrowTop < triggerPoint) {
-                    // Gecikmeleri kaldır - hemen göster
-                    arrow.style.opacity = '1';
-                    arrow.style.transform = 'scale(1)';
-                    arrow.classList.add('aos-animated');
+                    const delay = parseInt(arrow.getAttribute('data-aos-delay') || 0);
+                    
+                    setTimeout(() => {
+                        arrow.style.opacity = '1';
+                        arrow.style.transform = 'scale(1)';
+                        arrow.classList.add('aos-animated');
+                    }, delay);
                 }
             }
         });
@@ -242,11 +248,13 @@ document.addEventListener('DOMContentLoaded', function() {
             element.style.transform = 'translateX(-30px)';
         }
         
-        element.style.transition = 'opacity 0.3s ease, transform 0.3s ease'; // 0.8s'den 0.3s'ye düşürüldü
+        element.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
     });
     
-    // İlk yükleme için animasyonları çalıştır - sayfa yüklenir yüklenmez hemen çalıştır
-    animateOnScroll();
+    // İlk yükleme için animasyonları çalıştır
+    setTimeout(() => {
+        animateOnScroll();
+    }, 100);
     
     // Testimonial Slider Kurulumu
     function setupTestimonialSlider() {
