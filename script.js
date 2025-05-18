@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const elements = document.querySelectorAll('[data-aos]');
         const flowArrows = document.querySelectorAll('.flow-arrow');
         const statsSection = document.querySelector('.stats');
-        const triggerPoint = window.innerHeight * 0.9;
+        const triggerPoint = window.innerHeight * 0.98;
         
         elements.forEach(element => {
             if (!element.classList.contains('aos-animated')) {
