@@ -1843,24 +1843,23 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 768px) {
-    :root {
-        --section-spacing: 5rem;
-    }
-    
     .navbar .container {
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.5rem;
+        padding: 0.5rem 1rem;
     }
     
     .logo {
         margin-bottom: 0.5rem;
+        font-size: var(--font-size-xl);
+        margin-right: auto;
     }
     
     .nav-links {
         display: flex;
-        justify-content: center;
-        width: 100%;
+        justify-content: flex-end;
+        width: auto;
         gap: 1.5rem;
         padding: 0;
         position: static;
@@ -1868,11 +1867,14 @@ input:focus, select:focus, textarea:focus {
         box-shadow: none;
         transform: none;
         height: auto;
+        margin-left: auto;
     }
     
     .nav-links a {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-md);
         color: var(--color-text);
+        font-weight: 500;
+        padding: 0.5rem 0;
     }
     
     .menu-toggle {
@@ -1945,15 +1947,25 @@ input:focus, select:focus, textarea:focus {
 
 @media (max-width: 576px) {
     .navbar .container {
-        padding: 0 1rem;
+        padding: 0.5rem 1rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .logo {
+        margin-bottom: 0;
+        margin-right: 0;
     }
     
     .nav-links {
-        gap: 1rem;
+        gap: 1.5rem;
+        margin-left: 0;
     }
     
     .nav-links a {
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-base);
+        font-weight: 600;
     }
     
     .hero-content-right {
