@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         stats.forEach(stat => {
             const target = parseInt(stat.getAttribute('data-count'));
+            const hasPlus = stat.textContent.includes('+');
             let count = 0;
             const duration = 2000; // Animasyon süresi (ms)
             const increment = target / (duration / 20); // Her 20ms'de bir artış
@@ -169,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const timer = setInterval(() => {
                 count += increment;
                 if (count >= target) {
-                    stat.textContent = target;
+                    stat.textContent = hasPlus ? target + '+' : target;
                     clearInterval(timer);
                 } else {
                     stat.textContent = Math.floor(count);
