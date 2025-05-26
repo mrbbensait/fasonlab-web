@@ -36,10 +36,11 @@
             <image:title>Vücut Bakım Ürünleri - FasonLAB</image:title>
         </image:image>
     </url>
+
     <url>
-        <loc>https://fasonlab.com/blog.html</loc>
+        <loc>https://fasonlab.com/sss.html</loc>
         <lastmod>2024-12-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
 </urlset> 

@@ -276,6 +276,55 @@ document.addEventListener('DOMContentLoaded', function() {
         animateOnScroll();
     }, 100);
     
+    // FAQ Accordion İşlevselliği
+    initFAQAccordion();
+    
+    // FAQ Accordion Fonksiyonu
+    function initFAQAccordion() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            if (question) {
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Tüm diğer FAQ öğelerini kapat
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Tıklanan öğeyi aç/kapat
+                    if (isActive) {
+                        item.classList.remove('active');
+                    } else {
+                        item.classList.add('active');
+                    }
+                });
+            }
+        });
+        
+        // Kategori linklerine smooth scroll ekle
+        const categoryLinks = document.querySelectorAll('.category-link');
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+    
     // Testimonial Slider Kurulumu
     function setupTestimonialSlider() {
         const testimonialSlides = document.querySelector('.testimonial-slides');
