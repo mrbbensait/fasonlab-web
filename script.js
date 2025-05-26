@@ -58,8 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Süreç zaman çizelgesi animasyonlarını başlat
     initProcessTimeline();
     
-    // Mobil Menü - Artık kullanılmıyor, ancak gelecekte kullanılabilir diye kod kalabilir
-    /*
+    // Mobil Menü
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
@@ -90,7 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    */
     
     // Scroll Olayları
     const navbar = document.querySelector('.navbar');
@@ -154,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupTestimonialSlider();
     
     // İstatistik Sayaçları
-    const stats = document.querySelectorAll('.stat-number');
+    const stats = document.querySelectorAll('.stat-number[data-count]'); // Sadece data-count attribute'u olanları seç
     let countersStarted = false;
     
     function startCounters() {
@@ -162,6 +160,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         stats.forEach(stat => {
             const target = parseInt(stat.getAttribute('data-count'));
+            if (isNaN(target)) return; // NaN kontrolü ekle
+            
             const hasPlus = stat.textContent.includes('+');
             let count = 0;
             const duration = 2000; // Animasyon süresi (ms)
@@ -179,6 +179,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         countersStarted = true;
+    }
+    
+    // Progress bar animasyonu
+    function animateProgressBars() {
+        const progressBars = document.querySelectorAll('.progress-bar[data-progress]');
+        
+        progressBars.forEach(bar => {
+            const progress = parseInt(bar.getAttribute('data-progress'));
+            const parentStep = bar.closest('.process-step');
+            
+            if (parentStep && parentStep.classList.contains('aos-animated')) {
+                setTimeout(() => {
+                    bar.style.height = progress + '%';
+                }, 500);
+            }
+        });
     }
     
     // Scroll-triggered Animations için AOS benzeri fonksiyon
@@ -199,6 +215,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         element.style.opacity = '1';
                         element.style.transform = 'translateY(0)';
                         element.classList.add('aos-animated');
+                        
+                        // Progress bar animasyonunu tetikle
+                        animateProgressBars();
                     }, delay);
                 }
             }

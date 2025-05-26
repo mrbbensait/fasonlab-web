@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://fasonlab.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow specific files
+Disallow: /script.js
+Disallow: /style.css
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Allow important directories
+Allow: /images/
+Allow: /*.html$ 
